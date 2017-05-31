@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tvDiceSettings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="60dp"
+        android:layout_weight="0.03"
+        android:text="@string/tvDiceSettings_str"
+        android:textAlignment="textStart"
+        android:textColor="?android:attr/textColorTertiary"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tvDiceType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="60dp"
+        android:layout_weight="0.01"
+        android:text="@string/tvDiceType_str"
+        android:textAlignment="textStart"
+        android:textColor="?android:attr/textColorTertiary"
+        android:textSize="18sp" />
+
+    <Spinner
+        android:id="@+id/sprDiceNumber"
+        android:layout_width="205dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="60dp"
+        android:layout_weight="0.01" />
+
+    <TextView
+        android:id="@+id/tvDiceNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="60dp"
+        android:layout_weight="0.01"
+        android:text="@string/tvDiceNumber_str"
+        android:textAlignment="textStart"
+        android:textColor="?android:attr/textColorTertiary"
+        android:textSize="18sp" />
+
+    <Spinner
+        android:id="@+id/sprDiceType"
+        android:layout_width="205dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="60dp"
+        android:layout_weight="0.01" />
+
+    <Button
+        android:id="@+id/btnContinueDiceSettings"
+        style="@android:style/Widget.Material.Button.Borderless.Colored"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginBottom="47dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/btnContinueDiceSettings_str"
+        android:textAlignment="center"
+        android:textColor="?android:attr/textColorTertiary"
+        android:typeface="sans"
+        android:onClick="toTableSettings"/>
+</LinearLayout>

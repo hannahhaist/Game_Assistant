@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/tvColumns"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tvColumns_str"
+        android:textColor="?android:attr/textColorTertiary"
+        android:textSize="18sp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="21dp"
+        android:layout_below="@+id/tvTableSettings"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/tvRows"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tvRows_str"
+        android:textColor="?android:attr/textColorTertiary"
+        android:textSize="18sp"
+        android:layout_centerVertical="true"
+        android:layout_alignStart="@+id/tvTableSettings" />
+
+    <TextView
+        android:id="@+id/tvTableSettings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="57dp"
+        android:text="@string/tvTableSettings_str"
+        android:textColor="?android:attr/textColorTertiary"
+        android:textSize="18sp"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/tvColumns"
+        android:layout_marginStart="11dp" />
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvColumns"
+        android:layout_alignStart="@+id/tvColumns"
+        android:layout_marginTop="7dp"
+        android:id="@+id/radioGroup2">
+
+        <RadioButton
+            android:id="@+id/rbtnColumnsPlayer"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/rbtnColumnsPlayer_str"
+            android:textColor="@android:color/black" />
+
+        <RadioButton
+            android:id="@+id/rbtnColumnsNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/rbtnColumnsNumber_str"
+            android:textColor="@android:color/black" />
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/etColumnsNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/radioGroup2"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="48dp"
+        android:layout_toEndOf="@+id/radioGroup2"
+        android:ems="10" />
+
+    <CheckBox
+        android:id="@+id/cbColumnsLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tvRows"
+        android:layout_below="@+id/etColumnsNumber"
+        android:layout_marginStart="23dp"
+        android:text="@string/cbColumnsLabel_str"
+        android:textColor="@android:color/black" />
+
+    <TextView
+        android:id="@+id/tvRowsNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:text="@string/tvRowsNumber_str"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"
+        android:layout_below="@+id/tvRows"
+        android:layout_alignStart="@+id/cbColumnsLabel" />
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:layout_alignBaseline="@+id/tvRowsNumber"
+        android:layout_alignBottom="@+id/tvRowsNumber"
+        android:layout_alignEnd="@+id/etColumnsNumber"
+        android:layout_marginEnd="13dp"
+        android:layout_alignStart="@+id/etColumnsNumber" />
+
+    <CheckBox
+        android:id="@+id/cbRowsLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tvRowsNumber"
+        android:layout_below="@+id/editText2"
+        android:text="@string/cbRowsLabel_str"
+        android:textColor="@android:color/black"/>
+
+    <Button
+        android:id="@+id/btnContinueTableSettings"
+        style="@android:style/Widget.Material.Button.Borderless.Colored"
+        android:textColor="?android:attr/textColorTertiary"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginBottom="47dp"
+        android:text="@string/btnContinueTableSettings_str"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+
+</RelativeLayout>

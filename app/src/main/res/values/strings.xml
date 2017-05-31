@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">assistant</string>
+
+    <string name="tvChoose_str">choose assistant type</string>
+    <string name="btnPreBuilt_str">pre-built</string>
+    <string name="btnCustom_str">custom</string>
+
+    <string name="tvChooseFeaturesCustom_str">choose features</string>
+    <string name="btnContinueFeaturesCustom_str">continue</string>
+    <string name="checkDice_str">Dice</string>
+    <string name="checkScore_str">Score Table</string>
+    <string name="checkTimer_str">Timer</string>
+
+    <string name="tvDiceSettings_str">dice settings</string>
+    <string name="tvDiceType_str">type</string>
+    <string name="tvDiceNumber_str">number</string>
+    <string name="btnContinueDiceSettings_str">continue</string>
+
+    <string name="tvTableSettings_str">table settings</string>
+    <string name="tvColumns_str">columns</string>
+    <string name="tvRows_str">rows</string>
+    <string name="rbtnColumnsPlayer_str">use player names as columns</string>
+    <string name="rbtnColumnsNumber_str">enter number of columns</string>
+    <string name="cbColumnsLabel_str">label columns</string>
+    <string name="tvRowsNumber_str">enter number of rows</string>
+    <string name="cbRowsLabel_str">label rows</string>
+    <string name="btnContinueTableSettings_str">continue</string>
+
+    <string name="tvTimerSettings_str">timer settings</string>
+    <string name="tvTimerDuration_str">table settings</string>
+    <string name="rbtnTimerOne_str">one timer</string>
+    <string name="rbtnTimerEach_str">timer for each player</string>
+
+</resources>
