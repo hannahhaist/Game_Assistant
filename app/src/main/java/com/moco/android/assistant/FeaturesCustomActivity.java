@@ -20,15 +20,6 @@ public class FeaturesCustomActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.features_custom);
-
-        LinearLayout featuresLayout = (LinearLayout)findViewById(R.id.features_view);
-        if(featuresLayout != null) {
-            Toast toast = Toast.makeText(this,"nichtnull",Toast.LENGTH_LONG);
-        toast.show();
-            Log.d("featuresactivity", "nichtnull");
-        }else{
-            Log.d("featuresactivity", "null");
-        }
     }
 
     protected void onFeatureClicked(View view) {
@@ -63,13 +54,9 @@ public class FeaturesCustomActivity extends Activity {
 
     //called when user taps on continue button. forwards to dice settings
     protected void toNextSettings(View view){
-        Log.d("featuresactivity", "huhu");
-
         CustomAssistant assistant = new CustomAssistant(features);
         Intent intent =  new Intent(this, DiceSettingsActivity.class);
         String next = features.keySet().iterator().next();
-//        Toast toast = Toast.makeText(this,next,Toast.LENGTH_LONG);
-//        toast.show();
         if(next.equals("dice")){
             intent = new Intent(this, DiceSettingsActivity.class);
         }else if(next.equals("table")){
