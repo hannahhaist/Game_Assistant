@@ -43,7 +43,7 @@
         android:layout_below="@+id/tvColumns"
         android:layout_alignStart="@+id/tvColumns"
         android:layout_marginTop="7dp"
-        android:id="@+id/radioGroup2">
+        android:id="@+id/rgColumns">
 
         <RadioButton
             android:id="@+id/rbtnColumnsPlayer"
@@ -64,10 +64,10 @@
         android:id="@+id/etColumnsNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/radioGroup2"
+        android:layout_alignBottom="@+id/rgColumns"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="48dp"
-        android:layout_toEndOf="@+id/radioGroup2"
+        android:layout_toEndOf="@+id/rgColumns"
         android:ems="10" />
 
     <CheckBox
@@ -92,7 +92,7 @@
         android:layout_alignStart="@+id/cbColumnsLabel" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/etRowsNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -108,7 +108,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/tvRowsNumber"
-        android:layout_below="@+id/editText2"
+        android:layout_below="@+id/etRowsNumber"
         android:text="@string/cbRowsLabel_str"
         android:textColor="@android:color/black"/>
 
