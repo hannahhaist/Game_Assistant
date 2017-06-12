@@ -11,12 +11,13 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import java.text.ParseException;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.Timer;
 
 
 public class InGameActivity extends Activity {
-    Handler gameHandler;
-    Handler timerHandler;
+    public Handler gameHandler;
     Thread thread;
     TextView tvTimer;
     String timerMessage;
@@ -31,8 +32,9 @@ public class InGameActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_table_in_game);
 
-        timerHandler = new Handler();
-        ta = new TimerAssistant(2,3,60,timerHandler);
+        Assistant assistant = getCustomAssistant();
+
+        ta = new TimerAssistant(assistant.getTimer());
     }
 
     /*
@@ -41,16 +43,19 @@ public class InGameActivity extends Activity {
     public void changeToDice(View view){
         setContentView(R.layout.activity_dice_game);
         tvTimer = (TextView) findViewById(R.id.tvTimer);
+        tvTimer.setText(ta.getTimer());
     }
 
     public void changeToTimer(View view){
         setContentView(R.layout.activity_timer_in_game);
         tvTimer = (TextView) findViewById(R.id.tvTimer);
+        tvTimer.setText(ta.getTimer());
     }
 
     public void changeToTable(View view){
         setContentView(R.layout.activity_table_in_game);
         tvTimer = (TextView) findViewById(R.id.tvTimer);
+        tvTimer.setText(ta.getTimer());
     }
 
 
@@ -70,14 +75,16 @@ public class InGameActivity extends Activity {
         //thread.start();
         if(ta.paused) {
             timerButton.setText("Stop Timer");
-            new Thread(ta).start();
+
             gameHandler = new Handler() {
                 @Override
                 public void handleMessage(Message msg) {
-                    timerMessage = "" + msg.arg1;
+                    String timerMessage = "" + msg.obj;
                     tvTimer.setText(timerMessage);
                 }
             };
+            ta.setGameHandler(gameHandler);
+            new Thread(ta).start();
         }
         else{
             timerButton.setText("Start Timer");
@@ -86,54 +93,41 @@ public class InGameActivity extends Activity {
         }
     }
 
+    public void resetTimer(View view){
+       ta.resetTimer();
+        tvTimer.setText(ta.getTimer());
+    }
 
 
 
-    /*
-    Timer class
-     */
-    class TimerAssistant implements Runnable{
-        boolean paused = true;
-        private int hour;
-        private int minute;
-        private int second;
 
-        Message message;
-        Handler timerHandler;
 
-        public TimerAssistant(int hour, int minute, int second, Handler timerHandler){
-            assert(hour >=0 && hour < 100 && minute >= 0 && minute < 60 && second >=0 && second < 60);
-            this.hour = hour;
-            this.minute = minute;
-            this.second = second;
-            this.timerHandler = timerHandler;
 
-        }
+    /*Testfunktion
+    Gibt einen Custom assistant zum testen zurück
+    */
+    public  Assistant getCustomAssistant(){
+        Map<String, Map<String,String>> features = new LinkedHashMap<>();
+        Map<String, String> arr = new LinkedHashMap<String, String>();
+        features.put("dice", arr);
+        features.put("table", arr);
+        features.put("timer", arr);
+        Assistant assistant = new CustomAssistant(features);
+        Map<String, String> settings = assistant.getDice();
+        settings.put("type", "6");
+        settings.put("number", "3");
+        assistant.setDice(settings);
+        settings = assistant.getTable();
+        settings = assistant.getTimer();
+        settings.put("hour", "2");
+        settings.put("minute", "1");
+        settings.put("second","5");
 
-        @Override public void run() {
-            Looper.prepare();
-            paused = false;
-            try {
-            while (!paused && second >=0 ){
-            message = Message.obtain();
-            message.arg1 =second;
-            gameHandler.sendMessage(message);
-                System.out.println(second);
 
-                Thread.sleep(1000);
-                second--;
-            }
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
 
-        public void pause(){
-            paused = !paused;
-        }
-        public String returnTimer(){
-            return hour+":"+minute+";"+second;
-        }
+        return assistant;
+
+
 
 
     }
