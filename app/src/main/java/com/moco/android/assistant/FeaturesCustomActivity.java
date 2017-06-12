@@ -6,15 +6,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
-import android.widget.LinearLayout;
 import android.widget.Toast;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
-
+import java.util.Map;
 
 public class FeaturesCustomActivity extends Activity {
-    private HashMap<String, String[]> features = new LinkedHashMap<String, String[]>();
-    String[] arr;
+    private Map<String, Map<String, String>> features = new LinkedHashMap<String, Map<String, String>>();
+    Map<String, String> arr = new LinkedHashMap<String, String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,21 +50,25 @@ public class FeaturesCustomActivity extends Activity {
         }
     }
 
-    //called when user taps on continue button. forwards to dice settings
+    //called when user taps on continue button. creates an instance of CustomAssistant, forwards to next settins
     protected void toNextSettings(View view){
-        CustomAssistant assistant = new CustomAssistant(features);
-        Intent intent =  new Intent(this, DiceSettingsActivity.class);
-        String next = features.keySet().iterator().next();
-        if(next.equals("dice")){
-            intent = new Intent(this, DiceSettingsActivity.class);
-        }else if(next.equals("table")){
-            intent = new Intent(this, TableSettingsActivity.class);
-        }else if(next.equals("timer")){
-            intent = new Intent(this, TimerSettingsActivity.class);
+        if(features.size() != 0){
+            Assistant assistant = new CustomAssistant(features);
+
+            Intent intent = new Intent();
+            String next = features.keySet().iterator().next();
+
+            if(next.equals("dice")){
+                intent = new Intent(this, DiceSettingsActivity.class);
+            }else if(next.equals("table")){
+                intent = new Intent(this, TableSettingsActivity.class);
+            }else if(next.equals("timer")) {
+                intent = new Intent(this, TimerSettingsActivity.class);
+            }
+            intent.putExtra("assistant",assistant);
+            startActivity(intent);
         }else{
             Toast.makeText(this, "please choose some features..", Toast.LENGTH_LONG).show();
         }
-        intent.putExtra("assistant",assistant);
-        startActivity(intent);
     }
 }

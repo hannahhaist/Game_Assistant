@@ -6,10 +6,10 @@
     <string name="btnCustom_str">custom</string>
 
     <string name="tvChooseFeaturesCustom_str">choose features</string>
-    <string name="btnContinueFeaturesCustom_str">continue</string>
     <string name="checkDice_str">Dice</string>
     <string name="checkScore_str">Score Table</string>
     <string name="checkTimer_str">Timer</string>
+    <string name="btnContinueFeaturesCustom_str">continue</string>
 
     <string name="tvDiceSettings_str">dice settings</string>
     <string name="tvDiceType_str">type</string>
@@ -42,5 +42,12 @@
     <string name="btStartTimer_str">Start Timer</string>
     <string name="btStopTimer_str">Stop Timer</string>
     <string name="btResetTimer_str">Reset Timer</string>
+    <string name="btnContinueTimerSettings_str">continue</string>
+
+    <string name="tvPlayerNumber_str">number of players</string>
+    <string name="btnContinuePlayerNumber_str">continue</string>
+
+    <string name="tvPlayerNames_str">plaers nicknames</string>
+    <string name="btnStartGame_str">start game</string>
 
 </resources>

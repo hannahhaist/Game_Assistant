@@ -64,5 +64,5 @@
         android:textAlignment="center"
         android:textColor="?android:attr/textColorTertiary"
         android:typeface="sans"
-        android:onClick="toTableSettings"/>
+        android:onClick="toNextSettings"/>
 </LinearLayout>

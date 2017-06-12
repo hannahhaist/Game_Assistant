@@ -32,7 +32,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/rbtnTimerEach_str" />
+
     </RadioGroup>
+
+    <Button
+        android:id="@+id/btnContinueTimerSettings"
+        style="@android:style/Widget.Material.Button.Borderless.Colored"
+        android:textColor="?android:attr/textColorTertiary"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginBottom="47dp"
+        android:text="@string/btnContinueTimerSettings_str"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 
 
 </RelativeLayout>

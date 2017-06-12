@@ -3,4 +3,35 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:id="@+id/tvPlayerNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="60dp"
+        android:layout_weight="0.03"
+        android:text="@string/tvPlayerNumber_str"
+        android:textAlignment="textStart"
+        android:textColor="?android:attr/textColorTertiary"
+        android:textSize="18sp" />
+
+    <Spinner
+        android:id="@+id/sprPlayerNumber"
+        android:layout_width="205dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="60dp"
+        android:layout_weight="0.01" />
+
+    <Button
+        android:id="@+id/btnContinuePlayerNumber"
+        style="@android:style/Widget.Material.Button.Borderless.Colored"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginBottom="47dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/btnContinuePlayerNumber_str"
+        android:textAlignment="center"
+        android:textColor="?android:attr/textColorTertiary"
+        android:typeface="sans"
+        android:onClick="toNextSettings"/>
 </LinearLayout>

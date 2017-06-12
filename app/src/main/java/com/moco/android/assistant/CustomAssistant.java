@@ -1,13 +1,11 @@
 package com.moco.android.assistant;
 
-import com.moco.android.assistant.Assistant;
-
-import java.util.HashMap;
+import java.util.Map;
 
 public class CustomAssistant extends Assistant {
 
-    public CustomAssistant(HashMap<String, String[]> features){
-        super();
+    public CustomAssistant(Map<String, Map<String, String>> features){
+        super(features);
     }
 
 }

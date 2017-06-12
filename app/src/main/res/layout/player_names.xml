@@ -3,4 +3,28 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:id="@+id/tvPlayerNames"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="60dp"
+        android:layout_weight="0.03"
+        android:text="@string/tvPlayerNames_str"
+        android:textAlignment="textStart"
+        android:textColor="?android:attr/textColorTertiary"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/btnStartGame"
+        style="@android:style/Widget.Material.Button.Borderless.Colored"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginBottom="47dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/btnStartGame_str"
+        android:textAlignment="center"
+        android:textColor="?android:attr/textColorTertiary"
+        android:typeface="sans"
+        android:onClick="startGame"/>
 </LinearLayout>
