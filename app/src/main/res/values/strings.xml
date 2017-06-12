@@ -30,5 +30,17 @@
     <string name="tvTimerDuration_str">table settings</string>
     <string name="rbtnTimerOne_str">one timer</string>
     <string name="rbtnTimerEach_str">timer for each player</string>
+    <string name="title_activity_dice_game">DiceGame</string>
+    <string name="title_activity_table_in_game">TableInGame</string>
+    <string name="title_activity_timer_in_game">TimerInGame</string>
+    <string name="btTable_str">Table</string>
+    <string name="btDice_str">Dice</string>
+    <string name="btTimer_str">Timer</string>
+    <string name="title_activity_in_game">InGameActivity</string>
+    <string name="btNextPlayer_str" >Next Player </string>
+    <string name="btRollDice_str">Roll Dice</string>
+    <string name="btStartTimer_str">Start Timer</string>
+    <string name="btStopTimer_str">Stop Timer</string>
+    <string name="btResetTimer_str">Reset Timer</string>
 
 </resources>

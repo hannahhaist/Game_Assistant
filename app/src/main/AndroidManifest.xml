@@ -9,6 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".InGameActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!--
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -16,10 +24,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".FeaturesCustomActivity"/>
-        <activity android:name=".DiceSettingsActivity"/>
-        <activity android:name=".TableSettingsActivity"/>
-        <activity android:name=".TimerSettingsActivity"/>
-    </application>
+        -->
+        <activity android:name=".FeaturesCustomActivity" />
+        <activity android:name=".DiceSettingsActivity" />
+        <activity android:name=".TableSettingsActivity" />
+        <activity android:name=".TimerSettingsActivity" />
+        <!--
 
+        <activity
+            android:name=".InGameActivity"
+            android:label="@string/title_activity_in_game"></activity>
+
+    -->
+    </application>
 </manifest>
