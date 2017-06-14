@@ -68,17 +68,17 @@ public class DiceSettingsActivity extends Activity {
                 }else{
                     //TODO:to player settings..
                 }
-                //get settings from spinners and write into assistant
-                String type = sprType.getSelectedItem().toString();
-                String number = sprNumber.getSelectedItem().toString();
-                Map<String, String> settings = assistant.getDice();
-                settings.put("type", type);
-                settings.put("number", number);
-                assistant.setDice(settings);
-                //intent
-                intent.putExtra("assistant",assistant);
-                startActivity(intent);
             }
         }
+        //get settings from spinners and write into assistant
+        String type = sprType.getSelectedItem().toString();
+        String number = sprNumber.getSelectedItem().toString();
+        Map<String, String> settings = assistant.getDice();
+        settings.put("type", type);
+        settings.put("number", number);
+        assistant.setDice(settings);
+        //intent
+        intent.putExtra("assistant",assistant);
+        startActivity(intent);
     }
 }

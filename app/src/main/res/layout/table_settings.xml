@@ -68,6 +68,7 @@
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="48dp"
         android:layout_toEndOf="@+id/rgColumns"
+        android:inputType="number"
         android:ems="10" />
 
     <CheckBox
@@ -78,7 +79,8 @@
         android:layout_below="@+id/etColumnsNumber"
         android:layout_marginStart="23dp"
         android:text="@string/cbColumnsLabel_str"
-        android:textColor="@android:color/black" />
+        android:textColor="@android:color/black"
+        android:onClick="onCheckboxClicked"/>
 
     <TextView
         android:id="@+id/tvRowsNumber"
@@ -96,7 +98,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="number"
         android:layout_alignBaseline="@+id/tvRowsNumber"
         android:layout_alignBottom="@+id/tvRowsNumber"
         android:layout_alignEnd="@+id/etColumnsNumber"
@@ -110,7 +112,8 @@
         android:layout_alignStart="@+id/tvRowsNumber"
         android:layout_below="@+id/etRowsNumber"
         android:text="@string/cbRowsLabel_str"
-        android:textColor="@android:color/black"/>
+        android:textColor="@android:color/black"
+        android:onClick="onCheckboxClicked"/>
 
     <Button
         android:id="@+id/btnContinueTableSettings"
@@ -121,7 +124,8 @@
         android:layout_marginBottom="47dp"
         android:text="@string/btnContinueTableSettings_str"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="toNextSettings"/>
 
 
 </RelativeLayout>
