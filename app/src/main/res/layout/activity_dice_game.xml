@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    >
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:weightSum="1"
+    >
+
+<include layout="@layout/ingame_layout"
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content"
+
+    />
+    <TextView
+        android:id="@+id/tvTimer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"/>
+
+
+
+</LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:weightSum="1"
+        android:id="@+id/llDiceRoll">
+
+        <Button
+            android:id="@+id/btRollDice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
+            android:gravity="bottom"
+            android:text="@string/btRollDice_str"
+            android:layout_marginLeft="100dp"
+            android:onClick="diceRoll"/>
+
+
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="148dp"
+        android:layout_weight="0.49">
+
+
+        <Button
+            android:id="@+id/btTable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="23dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/btTable_str"
+            android:onClick="changeToTable"/>
+
+        <Button
+            android:id="@+id/btTimer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btTimer_str"
+            android:onClick="changeToTimer"
+            android:layout_alignBaseline="@+id/btTable"
+            android:layout_alignBottom="@+id/btTable"
+            android:layout_toStartOf="@+id/btNextPlayer"
+            android:layout_marginEnd="17dp" />
+
+        <Button
+            android:id="@+id/btNextPlayer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignTop="@+id/btTimer"
+            android:layout_marginEnd="27dp"
+            android:text="@string/btNextPlayer_str"
+            android:onClick="nextPlayer"/>
+    </RelativeLayout>
+</LinearLayout>
