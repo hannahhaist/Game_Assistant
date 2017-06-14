@@ -8,9 +8,11 @@ import android.os.Looper;
 import android.os.Message;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Timer;
@@ -22,6 +24,7 @@ public class InGameActivity extends Activity {
     TextView tvTimer;
     String timerMessage;
     TimerAssistant ta;
+    DiceAssistant da;
 
 
     public InGameActivity() throws ParseException {
@@ -34,7 +37,13 @@ public class InGameActivity extends Activity {
 
         Assistant assistant = getCustomAssistant();
 
+        da = new DiceAssistant(assistant.getDice());
         ta = new TimerAssistant(assistant.getTimer());
+
+        /*
+        !!!TEST FOR DICETHROW!!!!
+         */
+
     }
 
     /*
@@ -63,6 +72,29 @@ public class InGameActivity extends Activity {
     }
 
     /*
+    DICE FUNCTIONS
+     */
+
+    public void diceRoll(View view){
+        TextView tv = getDice();
+       LinearLayout ll = (LinearLayout) findViewById(R.id.llDiceRoll);
+        ll.addView(tv);
+       // ArrayList<Integer> testThrow = da.testThrow();
+        //System.out.println(da.sumContribution(da.sort(testThrow)));
+    }
+
+    protected TextView getDice(){
+        TextView tv = new TextView(this);
+        tv.setLayoutParams(new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.MATCH_PARENT));
+        tv.setText(""+da.getRandomNumber());
+
+        return tv;
+    }
+
+    /*
+    TIMER FUNCTIONS
     Start the Timer
      */
     public void startTimer(View view){

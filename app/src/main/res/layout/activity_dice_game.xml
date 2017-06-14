@@ -33,7 +33,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:weightSum="1">
+        android:weightSum="1"
+        android:id="@+id/llDiceRoll">
 
         <Button
             android:id="@+id/btRollDice"
@@ -42,7 +43,8 @@
             android:layout_marginTop="100dp"
             android:gravity="bottom"
             android:text="@string/btRollDice_str"
-            android:layout_marginLeft="100dp"/>
+            android:layout_marginLeft="100dp"
+            android:onClick="diceRoll"/>
 
 
     </LinearLayout>
