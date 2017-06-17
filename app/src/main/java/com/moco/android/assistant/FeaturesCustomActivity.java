@@ -9,9 +9,10 @@ import android.widget.CheckBox;
 import android.widget.Toast;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class FeaturesCustomActivity extends Activity {
-    private Map<String, Map<String, String>> features = new LinkedHashMap<String, Map<String, String>>();
+    private Map<String, Map<String, String>> features = new TreeMap<String, Map<String, String>>();
     Map<String, String> arr = new LinkedHashMap<String, String>();
 
     @Override
@@ -49,9 +50,6 @@ public class FeaturesCustomActivity extends Activity {
                 break;
         }
     }
-
-    //TODO sortieren!!
-
 
     //called when user taps on continue button. creates an instance of CustomAssistant, forwards to next settins
     protected void toNextSettings(View view){

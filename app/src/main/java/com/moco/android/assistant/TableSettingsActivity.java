@@ -26,6 +26,7 @@ public class TableSettingsActivity extends Activity {
     String playerNames = "1"; // use player names = 1(default); custom = 0
     String labelCols = "0";
     String labelRows = "0";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -118,12 +119,10 @@ public class TableSettingsActivity extends Activity {
                         intent = new Intent(this, TimerSettingsActivity.class);
                     }
                 }else{
-                    //TODO:to player settings..
-                    Log.d("tSettings","no more features");
+                    intent = new Intent(this, PlayerNumberActivity.class);
                 }
             }
         }
-        //TODO: check cols and rows number (number??)
         //get settings from views and write into assistant
         Map<String, String> settings = assistant.getTable();
         settings.put("labelRows", labelRows);
@@ -139,23 +138,29 @@ public class TableSettingsActivity extends Activity {
         if(playerNames.equals("0")){
             if(!colsNumber.getText().toString().equals("")){
                 settings.put("columnsNumber", colsNumber.getText().toString());
+            }else{
+                Toast.makeText(this, "please enter number of columns", Toast.LENGTH_LONG).show();
+                return;
             }
         }
         if(!rowsNumber.getText().toString().equals("")){
             settings.put("rowsNumber", rowsNumber.getText().toString());
+        }else{
             Toast.makeText(this, "please enter number of rows", Toast.LENGTH_LONG).show();
+            return;
         }
 
         //////
         String rowsNumber = settings.get("rowsNumber");
         Log.d("tSettings",rowsNumber);
 //TODO: check if cols and rows number is given.
+
         ////
 //        if(settings.containsKey("rowsNumber") && settings.containsKey("columnsNumber")){
-//            assistant.setTable(settings);
-//            //intent
-//            intent.putExtra("assistant",assistant);
-//            startActivity(intent);
+            assistant.setTable(settings);
+            //intent
+            intent.putExtra("assistant",assistant);
+            startActivity(intent);
 //        }else{
 //            Toast.makeText(this, "please enter number of rows and columns", Toast.LENGTH_LONG).show();
 //        }

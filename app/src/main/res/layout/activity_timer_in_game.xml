@@ -24,18 +24,7 @@
         android:layout_height="0dp"
         android:weightSum="1"
         android:layout_weight="0.71">
-        <ImageView
-            android:id="@+id/imageView1"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:adjustViewBounds="true"
-            android:scaleType="centerCrop"
-            android:src="@drawable/ichourglass"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true"
-            android:contentDescription="" />
+
 
         <TextView
             android:id="@+id/tvTimerOver"

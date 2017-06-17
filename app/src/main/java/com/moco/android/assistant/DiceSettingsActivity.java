@@ -66,7 +66,7 @@ public class DiceSettingsActivity extends Activity {
                         intent = new Intent(this, TimerSettingsActivity.class);
                     }
                 }else{
-                    //TODO:to player settings..
+                    intent = new Intent(this, PlayerNumberActivity.class);
                 }
             }
         }

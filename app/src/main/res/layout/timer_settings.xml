@@ -17,9 +17,9 @@
         android:layout_width="match_parent"
         android:layout_height="167dp"
         android:layout_marginLeft="60dp"
-        android:layout_below="@+id/textView"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="124dp">
+        android:id="@+id/rgTimer"
+        android:layout_above="@+id/btnContinueTimerSettings"
+        android:layout_alignParentEnd="true">
 
         <RadioButton
             android:id="@+id/rbtnTimerOne"
@@ -28,11 +28,10 @@
             android:text="@string/rbtnTimerOne_str" />
 
         <RadioButton
-            android:id="@+id/radioButton"
+            android:id="@+id/rbtnTimerEach"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/rbtnTimerEach_str" />
-
     </RadioGroup>
 
     <Button
@@ -44,7 +43,65 @@
         android:layout_marginBottom="47dp"
         android:text="@string/btnContinueTimerSettings_str"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="toNextSettings"/>
 
+    <EditText
+        android:id="@+id/etHours"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:ems="10"
+        android:inputType="number"
+        android:layout_below="@+id/textView"
+        android:layout_alignStart="@+id/rgTimer" />
+
+    <EditText
+        android:id="@+id/etSeconds"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/etMinutes"
+        android:layout_alignBottom="@+id/etMinutes"
+        android:layout_toEndOf="@+id/etMinutes"
+        android:ems="10"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/etMinutes"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        android:layout_alignBaseline="@+id/etHours"
+        android:layout_alignBottom="@+id/etHours"
+        android:layout_toEndOf="@+id/etHours" />
+
+    <TextView
+        android:id="@+id/tvMinutes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/etHours"
+        android:layout_below="@+id/etHours"
+        android:layout_marginTop="16dp"
+        android:text="@string/tvMinutes_str"
+        android:layout_alignStart="@+id/etHours" />
+
+    <TextView
+        android:id="@+id/tvHours"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tvHours_str"
+        android:layout_alignBaseline="@+id/tvMinutes"
+        android:layout_alignBottom="@+id/tvMinutes"
+        android:layout_toEndOf="@+id/tvMinutes" />
+
+    <TextView
+        android:id="@+id/tvSeconds"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tvSeconds_str"
+        android:layout_alignBaseline="@+id/tvHours"
+        android:layout_alignBottom="@+id/tvHours"
+        android:layout_toEndOf="@+id/etMinutes" />
 
 </RelativeLayout>
