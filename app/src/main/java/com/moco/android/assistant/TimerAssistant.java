@@ -31,11 +31,11 @@ class TimerAssistant implements Runnable{
 
     protected TimerAssistant(Map<String, String> time){
 
-        this.hour = Integer.parseInt(time.get("hour"));
+        this.hour = Integer.parseInt(time.get("hours"));
         this.startHour = hour;
-        this.minute = Integer.parseInt(time.get("minute"));
+        this.minute = Integer.parseInt(time.get("minutes"));
         this.startMinute = minute;
-        this.second = Integer.parseInt(time.get("second"));
+        this.second = Integer.parseInt(time.get("seconds"));
         this.startSecond = second;
     }
 

@@ -49,5 +49,8 @@
 
     <string name="tvPlayerNames_str">plaers nicknames</string>
     <string name="btnStartGame_str">start game</string>
+    <string name="tvMinutes_str">Minutes</string>
+    <string name="tvHours_str">Hours</string>
+    <string name="tvSeconds_str">Seconds</string>
 
 </resources>

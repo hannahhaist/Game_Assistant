@@ -19,7 +19,7 @@ public class DiceSettingsActivity extends Activity {
 
     Assistant assistant = null;
     //spinner arrays
-    private List<String> types = new ArrayList<>(Arrays.asList("cube", "tetrahedron", "octahedron"));
+    private List<String> types = new ArrayList<>(Arrays.asList("4", "6", "8", "10", "12", "20"));
     private List<String> number =  new ArrayList<>(Arrays.asList("1", "2", "3"));
     Spinner sprType;
     Spinner sprNumber;
