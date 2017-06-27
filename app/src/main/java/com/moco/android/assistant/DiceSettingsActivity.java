@@ -50,6 +50,7 @@ public class DiceSettingsActivity extends Activity {
     protected void toNextSettings(View view){
         Map<String, Map<String, String>> features = assistant.getFeatures();
 
+
         Iterator<Map.Entry<String, Map<String, String>>> it = features.entrySet().iterator();
         String next = "";
         Intent intent = new Intent();

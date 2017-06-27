@@ -67,6 +67,7 @@ public class TimerSettingsActivity extends Activity {
 
     //called when user taps on continue button. forwards to player number settings
     protected void toNextSettings(View view){
+
         //write editText values into settings map
         //hours
         if(!etHours.getText().toString().equals("")){
@@ -94,6 +95,7 @@ public class TimerSettingsActivity extends Activity {
 //        settings.put("timerNumber", timerNumber);
 
         assistant.setTimer(settings);
+
         //intent
         Intent intent = new Intent(this, PlayerNumberActivity.class);
         intent.putExtra("assistant",assistant);

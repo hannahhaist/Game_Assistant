@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <Button
+        android:id="@+id/btDice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btDice_str"
+        android:onClick="changeToDice"
+        android:layout_gravity="left"
+        />
+    <Button
+        android:id="@+id/btTable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btTable_str"
+        android:onClick="changeToTable"></Button>
+
+    <Button
+        android:id="@+id/btTimer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btTimer_str"
+        android:onClick="changeToTimer"
+
+        android:layout_gravity="left"
+        />
+
+    <Button
+        android:id="@+id/btNextPlayer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btNextPlayer_str"
+        android:onClick="nextPlayer"
+        />
+
+
+</LinearLayout>

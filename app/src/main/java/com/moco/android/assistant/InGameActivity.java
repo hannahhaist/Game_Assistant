@@ -8,9 +8,12 @@ import android.os.Handler;
 import android.os.Message;
 import android.view.View;
 import android.widget.Button;
+import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -30,13 +33,16 @@ public class InGameActivity extends Activity {
     String timerMessage;
     TimerAssistant ta;
     DiceAssistant da;
+    TableAssistant tableAssistant;
     Assistant assistant;
-    Boolean diceGame =false;
-    Boolean tableGame =false;
-    Boolean timerGame = false;
+    Boolean diceGame;
+    Boolean tableGame;
+    Boolean timerGame;
     ArrayList<String> players;
     int roundNumber;
     int currentPlayer;
+    ArrayList<Integer> currentDiceThrow;
+    boolean imageAdded = false;
 
     public InGameActivity() throws ParseException {
     }
@@ -48,25 +54,25 @@ public class InGameActivity extends Activity {
         assistant = (Assistant) i.getSerializableExtra("assistant");
         //get Chosen gamefeature
         setGameFeatures(assistant);
-        if(tableGame){setContentView(R.layout.activity_table_in_game);}
+        if(tableGame){setContentView(R.layout.activity_table_in_game);
+        tableAssistant.drawTable(this);}
         else{
-            if(diceGame){setContentView(R.layout.activity_dice_game);}
+            if(diceGame){setContentView(R.layout.activity_dice_game);
+                if(!imageAdded) {
+                    da.addImageViews(this);
+                    imageAdded = true;
+                }
+            }
         else
             setContentView(R.layout.activity_timer_in_game);}
 
-        playerName = (TextView) findViewById(R.id.tvPlayerName);
-        currentRound = (TextView) findViewById(R.id.tvRoundNumber);
-        roundNumber = 1;
-        currentPlayer = 0;
-        playerName.setText(players.get(0));
-        currentRound.setText("Round "+ roundNumber);
-
-        da.createImageViews(this);
 
         disableUnusedButtons();
-        /*
-        !!!TEST FOR DICETHROW!!!!
-         */
+        roundNumber = 1;
+        currentPlayer = 0;
+       setPlayerAndRound();
+
+
 
     }
 
@@ -76,18 +82,26 @@ public class InGameActivity extends Activity {
     public void changeToDice(View view){
         setContentView(R.layout.activity_dice_game);
         disableUnusedButtons();
+        setPlayerAndRound();
+        da.createImageViews(this);
+        da.addImageViews(this);
+        if(currentDiceThrow!=null){da.setNewDiceImage(currentDiceThrow);}
+
 
     }
 
     public void changeToTimer(View view){
         setContentView(R.layout.activity_timer_in_game);
         disableUnusedButtons();
+        setPlayerAndRound();
 
     }
 
     public void changeToTable(View view){
         setContentView(R.layout.activity_table_in_game);
         disableUnusedButtons();
+        setPlayerAndRound();
+        tableAssistant.drawTable(this);
 
     }
 
@@ -105,14 +119,30 @@ public class InGameActivity extends Activity {
 
     }
 
+    private void setPlayerAndRound(){
+
+        playerName = (TextView) findViewById(R.id.tvPlayerName);
+        currentRound = (TextView) findViewById(R.id.tvRoundNumber);
+        playerName.setText(players.get(currentPlayer));
+        currentRound.setText("Round "+ roundNumber);
+        System.out.println("TEST");
+    }
+
     /*
     DICE FUNCTIONS
      */
 
     public void diceRoll(View view){
-            da.setNewDiceImage();
+            currentDiceThrow = da.diceThrow();
+            da.setNewDiceImage(currentDiceThrow);
+            findViewById(R.id.saveToTable).setVisibility(View.VISIBLE);
 
         }
+    public void saveToTable(View view){
+        tableAssistant.saveScore(currentDiceThrow,currentPlayer,roundNumber);
+        Toast.makeText(this, "Score is saved to Table", Toast.LENGTH_LONG).show();
+        findViewById(R.id.saveToTable).setVisibility(View.INVISIBLE);
+    }
 
 
     /*
@@ -153,21 +183,9 @@ public class InGameActivity extends Activity {
     }
 
     private void setGameFeatures(Assistant assistant){
-        if(assistant.getDice() != null){
-            diceGame = true;
-            da = new DiceAssistant(assistant.getDice());
-            System.out.println("DiceGame");
-        }
-        if(assistant.getTimer()!=null){
-            timerGame = true;
-            ta = new TimerAssistant(assistant.getTimer());
-            System.out.println("TimerGame");
-        }
-        if(assistant.getTable() != null){
-            tableGame = true;
-            System.out.println("TableGame");
-        }
-
+       /*
+       Get the Playernames
+        */
         Map<String, String> mPlayers = assistant.getPlayerNames();
         Iterator it = mPlayers.entrySet().iterator();
         players = new ArrayList<String>();
@@ -176,6 +194,43 @@ public class InGameActivity extends Activity {
             players.add(pair.getValue().toString());
             System.out.println(pair.getKey() + " = " + pair.getValue());
         }
+        /*
+        find the chosen gamefeatures
+         */
+        it = assistant.getFeatures().entrySet().iterator();
+        diceGame=false;
+        tableGame=false;
+        timerGame=false;
+
+        while(it.hasNext()){
+            Map.Entry pair = (Map.Entry)it.next();
+            switch (pair.getKey().toString()){
+                case "table":
+                    tableGame=true;
+                    tableAssistant = new TableAssistant(assistant.getTable(), players);
+                    break;
+                case "timer":
+                    timerGame=true;
+                    ta = new TimerAssistant(assistant.getTimer());
+                    break;
+                case "dice":
+                    diceGame=true;
+                    da = new DiceAssistant(assistant.getDice());
+                    da.createImageViews(this);
+                    break;
+
+            }
+        }
+
+    }
+
+    /**
+     * Table Functions
+     */
+    public void addRow(View view){
+        tableAssistant.addRow(this);
+        ScrollView sv = (ScrollView) findViewById(R.id.svScoreTable);
+        sv.fullScroll(HorizontalScrollView.FOCUS_DOWN);
     }
 
     private void disableUnusedButtons(){

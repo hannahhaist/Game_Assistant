@@ -31,7 +31,7 @@ public class Assistant implements Serializable{
     }
 
     public void setTimer(Map<String, String> timerSettings){
-        this.features.put("table", timerSettings);
+        this.features.put("timer", timerSettings);
     }
 
     public void setPlayerNumber(Map<String, String> pNumber){

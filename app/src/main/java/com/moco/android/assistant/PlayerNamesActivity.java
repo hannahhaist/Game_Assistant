@@ -55,12 +55,12 @@ public class PlayerNamesActivity extends Activity {
             TextView textView = new TextView(this);
             textView.setLayoutParams(params);
             textView.setText(textArray[c]);
-            linearLayout.addView(textView, posText);
+            linearLayout.addView(textView);
 
             //edit text
             EditText editText = new EditText(this);
             editText.setLayoutParams(params);
-            linearLayout.addView(editText, posInput);
+            linearLayout.addView(editText);
 
             editTexts[c] = editText;
             elements = elements + 2;

@@ -52,5 +52,7 @@
     <string name="tvMinutes_str">Minutes</string>
     <string name="tvHours_str">Hours</string>
     <string name="tvSeconds_str">Seconds</string>
+    <string name="AddRow">Add Row</string>
+    <string name="saveToTable">Save to Table</string>
 
 </resources>

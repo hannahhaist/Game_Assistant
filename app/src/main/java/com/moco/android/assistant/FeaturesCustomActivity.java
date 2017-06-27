@@ -53,6 +53,9 @@ public class FeaturesCustomActivity extends Activity {
 
     //called when user taps on continue button. creates an instance of CustomAssistant, forwards to next settins
     protected void toNextSettings(View view){
+
+
+
         if(features.size() != 0){
             Assistant assistant = new CustomAssistant(features);
 
