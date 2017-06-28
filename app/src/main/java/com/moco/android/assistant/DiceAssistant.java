@@ -66,9 +66,11 @@ protected void createImageViews(InGameActivity inGameActivity) {
         Context context = ivDice.getContext();
         int id = context.getResources().getIdentifier(picture, "drawable", context.getPackageName());
         ivDice.setGravity(Gravity.CENTER);
-        ivDice.setTextSize(30);
-        ivDice.setTextColor(Color.WHITE);
-        ivDice.setText(""+getRandomNumber());
+        if(type!=6) {
+            ivDice.setTextSize(30);
+            ivDice.setTextColor(Color.WHITE);
+            ivDice.setText("" + getRandomNumber());
+        }
         ivDice.setBackgroundResource(id);
 
        /* ivDice.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
@@ -87,14 +89,20 @@ protected void addImageViews(InGameActivity inGameActivity){
 }
 
     protected void setNewDiceImage(ArrayList<Integer> random){
-        for(int i=0;i<number;i++){
 
+        for(int i=0;i<number;i++){
             TextView ivDice = imageViews[i];
-            String picture = dicePictures.get(getRandomNumber());
-            Context context = ivDice.getContext();
-            int id = context.getResources().getIdentifier(picture, "drawable", context.getPackageName());
-            ivDice.setText(""+random.get(i));
-            ivDice.setBackgroundResource(id);
+            if(type!=6) {
+
+                ivDice.setText("" + random.get(i));
+
+            }
+            else{
+                String picture = dicePictures.get(random.get(i));
+                Context context = ivDice.getContext();
+                int id = context.getResources().getIdentifier(picture, "drawable", context.getPackageName());
+                ivDice.setBackgroundResource(id);
+            }
         }
     }
 
@@ -140,7 +148,6 @@ protected void addImageViews(InGameActivity inGameActivity){
                 }
                 break;
         }
-        //TODO finish all cases
 
     }
 }
