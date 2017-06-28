@@ -54,10 +54,9 @@ class TableAssistant {
             scoreTable.add(new int[columns]);
         }
         rowNames = new ArrayList<>();
-        if(labelRows){
             for(int i=0;i<rows;i++){
                 rowNames.add("Round "+i);
-            }
+
         }
 
     }
