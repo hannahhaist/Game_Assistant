@@ -36,6 +36,7 @@
         android:layout_height="wrap_content"
         android:text="@string/btNextPlayer_str"
         android:onClick="nextPlayer"
+        android:singleLine="true"
         />
 
 

@@ -32,6 +32,7 @@ public class DiceSettingsActivity extends Activity {
         sprType = (Spinner)findViewById(R.id.sprDiceType);
         sprNumber = (Spinner)findViewById(R.id.sprDiceNumber);
         fillSpinner(types, sprType);
+        sprType.setSelection(1);
         fillSpinner(number, sprNumber);
         //get data from Intent
         Intent i = getIntent();

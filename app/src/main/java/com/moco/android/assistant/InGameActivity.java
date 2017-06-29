@@ -4,13 +4,14 @@ package com.moco.android.assistant;
 import android.content.Intent;
 import android.os.Bundle;
 import android.app.Activity;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.HorizontalScrollView;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -44,6 +45,13 @@ public class InGameActivity extends Activity {
     ArrayList<Integer> currentDiceThrow;
     boolean imageAdded = false;
 
+    Button timerButton;
+    //progressbar for timer
+    ProgressBar progressBar;
+    CountDownTimer pbTimer;
+    Long millisLeft = null;
+    boolean reset;
+
     public InGameActivity() throws ParseException {
     }
 
@@ -57,20 +65,24 @@ public class InGameActivity extends Activity {
         if(tableGame){setContentView(R.layout.activity_table_in_game);
         tableAssistant.drawTable(this);}
         else{
-            if(diceGame){setContentView(R.layout.activity_dice_game);
+            if(diceGame){
+                setContentView(R.layout.activity_dice_game);
                 if(!imageAdded) {
                     da.addImageViews(this);
                     imageAdded = true;
                 }
+            } else {
+                setContentView(R.layout.activity_timer_in_game);
+                progressBar = (ProgressBar) findViewById(R.id.cpbTimer);
+                progressBar.setProgress(Math.round(ta.getMillis()));
             }
-        else
-            setContentView(R.layout.activity_timer_in_game);}
+        }
 
 
         disableUnusedButtons();
         roundNumber = 1;
         currentPlayer = 0;
-       setPlayerAndRound();
+        setPlayerAndRound();
 
 
 
@@ -153,8 +165,7 @@ public class InGameActivity extends Activity {
         /*
         Initiate Timer
          */
-        Button timerButton = (Button) findViewById(R.id.btStartTimer);
-
+        timerButton = (Button) findViewById(R.id.btStartTimer);
         //Define Handler that is attached to the UI thread
         //thread.start();
         if(ta.paused) {
@@ -163,23 +174,60 @@ public class InGameActivity extends Activity {
             gameHandler = new Handler() {
                 @Override
                 public void handleMessage(Message msg) {
-                    String timerMessage = "" + msg.obj;
+                    timerMessage = "" + msg.obj;
                     tvTimer.setText(timerMessage);
                 }
             };
             ta.setGameHandler(gameHandler);
             new Thread(ta).start();
+            if(millisLeft != null){
+                startProgressBar(millisLeft);
+//                Log.d("timer",""+millisLeft);
+            }else {
+                startProgressBar(ta.getMillis());
+            }
         }
         else{
             timerButton.setText("Start Timer");
             ta.pause();
-
+            pbTimer.cancel();
         }
     }
 
+    private void startProgressBar(long millis){
+
+        if(reset == true){
+            millis = ta.getMillis();
+            reset = false;
+        }
+        if(millis == ta.getMillis()) {
+            progressBar.setMax(Math.round(millis / 50));
+        }
+
+        progressBar.setVisibility(View.VISIBLE);
+        pbTimer = new CountDownTimer(millis, 50) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                millisLeft = millisUntilFinished;
+                //update progress every 100 milliseconds
+                progressBar.setProgress(Math.round(millisUntilFinished / 50));
+            }
+            @Override
+            public void onFinish() {
+                progressBar.setVisibility(View.INVISIBLE);
+            }
+        }.start();
+    }
+
     public void resetTimer(View view){
-       ta.resetTimer();
+        ta.resetTimer();
         tvTimer.setText(ta.getTimer());
+        timerButton.setText("Start Timer");
+        //progressbar
+        pbTimer.cancel();
+        progressBar.setProgress(Math.round(ta.getMillis()));
+        progressBar.setVisibility(View.VISIBLE);
+        reset = true;
     }
 
     private void setGameFeatures(Assistant assistant){
@@ -218,10 +266,8 @@ public class InGameActivity extends Activity {
                     da = new DiceAssistant(assistant.getDice());
                     da.createImageViews(this);
                     break;
-
             }
         }
-
     }
 
     /**

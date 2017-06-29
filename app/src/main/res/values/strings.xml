@@ -12,7 +12,7 @@
     <string name="btnContinueFeaturesCustom_str">continue</string>
 
     <string name="tvDiceSettings_str">dice settings</string>
-    <string name="tvDiceType_str">type</string>
+    <string name="tvDiceType_str">sides</string>
     <string name="tvDiceNumber_str">number</string>
     <string name="btnContinueDiceSettings_str">continue</string>
 

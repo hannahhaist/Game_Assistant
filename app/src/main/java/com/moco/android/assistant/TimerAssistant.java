@@ -40,6 +40,7 @@ class TimerAssistant implements Runnable{
     }
 
     @Override public void run() {
+        timeLeft=true;
         Looper.prepare();
         paused = false;
         try {
@@ -60,8 +61,6 @@ class TimerAssistant implements Runnable{
             message.obj = "Time over";
             gameHandler.sendMessage(message);
         }
-
-
     }
 
     private void countdown(){
@@ -89,6 +88,10 @@ class TimerAssistant implements Runnable{
 
     protected String getTimer(){
         return hour+":"+minute+":"+second;
+    }
+
+    protected long getMillis(){
+        return hour*3600000 + minute*60000 + second*1000 ;
     }
 
     protected void pause(){

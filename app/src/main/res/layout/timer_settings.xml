@@ -80,11 +80,11 @@
         android:id="@+id/tvMinutes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/etHours"
-        android:layout_below="@+id/etHours"
         android:layout_marginTop="16dp"
         android:text="@string/tvMinutes_str"
-        android:layout_alignStart="@+id/etHours" />
+        android:layout_below="@+id/etMinutes"
+        android:layout_toEndOf="@+id/etHours"
+        android:layout_marginLeft="10dp"/>
 
     <TextView
         android:id="@+id/tvHours"
@@ -93,15 +93,18 @@
         android:text="@string/tvHours_str"
         android:layout_alignBaseline="@+id/tvMinutes"
         android:layout_alignBottom="@+id/tvMinutes"
-        android:layout_toEndOf="@+id/tvMinutes" />
+        android:layout_alignStart="@+id/etHours"
+        android:layout_toStartOf="@+id/tvMinutes"
+        android:layout_marginLeft="15dp"/>
 
     <TextView
         android:id="@+id/tvSeconds"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/tvSeconds_str"
-        android:layout_alignBaseline="@+id/tvHours"
-        android:layout_alignBottom="@+id/tvHours"
-        android:layout_toEndOf="@+id/etMinutes" />
+        android:layout_alignBaseline="@+id/tvMinutes"
+        android:layout_alignBottom="@+id/tvMinutes"
+        android:layout_toEndOf="@+id/etMinutes"
+        android:layout_marginLeft="10dp"/>
 
 </RelativeLayout>
