@@ -73,6 +73,7 @@ public class InGameActivity extends Activity {
                 }
             } else {
                 setContentView(R.layout.activity_timer_in_game);
+
                 progressBar = (ProgressBar) findViewById(R.id.cpbTimer);
                 progressBar.setProgress(Math.round(ta.getMillis()));
             }
@@ -104,6 +105,8 @@ public class InGameActivity extends Activity {
 
     public void changeToTimer(View view){
         setContentView(R.layout.activity_timer_in_game);
+        progressBar = (ProgressBar) findViewById(R.id.cpbTimer);
+        progressBar.setProgress(Math.round(ta.getMillis()));
         disableUnusedButtons();
         setPlayerAndRound();
 
