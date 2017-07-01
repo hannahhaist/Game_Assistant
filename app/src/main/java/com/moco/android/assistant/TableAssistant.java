@@ -68,27 +68,32 @@ class TableAssistant {
         if(table.getChildCount() > 0){
             table.removeAllViews();
         }
+        table.setWeightSum(columns+1);
         TableLayout.LayoutParams tableParams = new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.WRAP_CONTENT);
-        TableRow.LayoutParams rowParams = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT);
-
+        TableRow.LayoutParams rowParams = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT, 1f);
+        rowParams.setMargins(2,2,2,2);
         /*
          * Create TableHead with Textviews
          */
         TableRow tableRow = new TableRow(inGameActivity);
         tableRow.setLayoutParams(tableParams);
+        tableRow.setBackgroundColor(Color.BLACK);
+        tableRow.setPadding(0,0,4,2);
 
         for(int column = -1; column < columnNames.size();column++){
-            if((column==-1 && labelRows) || column>=0) {
                 final TextView textView = new TextView(inGameActivity);
+
+                textView.setPadding(10,10,10,10);
+                textView.setBackgroundColor(Color.LTGRAY);
 
                 if (column >= 0) {
                     textView.setText(columnNames.get(column));
                 } else {
-                    textView.setText("_____");
+                    textView.setText("");
                 }
                 textView.setLayoutParams(rowParams);
                 tableRow.addView(textView);
-            }
+
         }
         table.addView(tableRow);
 
@@ -108,6 +113,8 @@ class TableAssistant {
             for (int column = -1; column < columns; column++) {
                 final EditText textView = new EditText(inGameActivity);
                 textView.setSelectAllOnFocus(true);
+                textView.setBackgroundColor(Color.LTGRAY);
+                textView.setPadding(10,10,10,10);
 
                 final int rowNumber = row;
                 final int columnNumber = column;
@@ -163,7 +170,7 @@ class TableAssistant {
             table.addView(tableRow);
         }
 
-        table.setBackgroundColor(Color.LTGRAY);
+        table.setBackgroundColor(Color.BLACK);
         createTableFooter(inGameActivity);
 
     }
@@ -177,12 +184,14 @@ class TableAssistant {
         }
         TableLayout.LayoutParams tableParams = new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.WRAP_CONTENT);
         TableRow.LayoutParams rowParams = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT);
+        rowParams.setMargins(2,2,2,2);
         TableRow tableRow = new TableRow(inGameActivity);
+
         tableRow.setLayoutParams(tableParams);
+        tableRow.setPadding(0,0,4,2);
 
         for(int column = -1; column < columnNames.size();column++){
             final int columnNumber = column;
-            if((column==-1 && labelRows) || column>=0) {
                 final TextView textView = new TextView(inGameActivity);
                 if (column >= 0) {
                     textView.setText(""+calculateColumn(columnNumber));
@@ -190,11 +199,13 @@ class TableAssistant {
                     textView.setText("Sum: ");
                 }
                 textView.setTextSize(20);
-                textView.setPadding(5,5,5,5);
+                textView.setBackgroundColor(Color.LTGRAY);
+                textView.setPadding(10,10,10,10);
                 textView.setLayoutParams(rowParams);
                 tableRow.addView(textView);
             }
-        }
+
+        footer.setBackgroundColor(Color.BLACK);
         footer.addView(tableRow);
     }
 

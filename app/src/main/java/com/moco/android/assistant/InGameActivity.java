@@ -150,12 +150,15 @@ public class InGameActivity extends Activity {
     public void diceRoll(View view){
             currentDiceThrow = da.diceThrow();
             da.setNewDiceImage(currentDiceThrow);
-            findViewById(R.id.saveToTable).setVisibility(View.VISIBLE);
+            if(tableGame) {
+                findViewById(R.id.saveToTable).setVisibility(View.VISIBLE);
+            }
 
         }
     public void saveToTable(View view){
         tableAssistant.saveScore(currentDiceThrow,currentPlayer,roundNumber);
         Toast.makeText(this, "Score is saved to Table", Toast.LENGTH_LONG).show();
+
         findViewById(R.id.saveToTable).setVisibility(View.INVISIBLE);
     }
 
@@ -295,6 +298,7 @@ public class InGameActivity extends Activity {
         }
         if(!tableGame){
             findViewById(R.id.btTable).setVisibility(View.INVISIBLE);
+
         }
 
     }
