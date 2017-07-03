@@ -31,34 +31,43 @@ class TableAssistant {
 
     TableAssistant(Map<String, String> tableSettings, ArrayList playerNames) {
 
+
+
+
         if (Integer.parseInt(tableSettings.get("labelCols")) == 1) {
             labelColumns = true;
 
         }
-
-        if (Integer.parseInt(tableSettings.get("usePlayerNames")) == 1) {
-            columnNames = playerNames;
-
-            columns = playerNames.size();
-        }
         if (Integer.parseInt(tableSettings.get("labelRows")) == 1) {
             labelRows = true;
         }
+
         String value = tableSettings.get("columnsNumber");
         if(value != null){  this.columns = Integer.parseInt(value) ;}
         value = tableSettings.get("rowsNumber");
         if(value!=null) {this.rows = Integer.parseInt(value);}
 
+        int usePlayerNames = Integer.parseInt(tableSettings.get("usePlayerNames"));
+        if (usePlayerNames == 1) {
+            columnNames = playerNames;
+
+            columns = playerNames.size();
+        }
+        else{
+            columnNames = new ArrayList<>();
+            for(int i = 0; i< columns;i++) {
+                columnNames.add("column " + i);
+            }
+        }
+        rowNames = new ArrayList<>();
+        for(int i=0;i<rows;i++){
+            rowNames.add("Round "+i);
+
+        }
         scoreTable = new ArrayList<>();
         for(int i = 0; i<rows;i++){
             scoreTable.add(new int[columns]);
         }
-        rowNames = new ArrayList<>();
-            for(int i=0;i<rows;i++){
-                rowNames.add("Round "+i);
-
-        }
-
     }
 
     void drawTable(final InGameActivity inGameActivity){
@@ -73,7 +82,7 @@ class TableAssistant {
         TableRow.LayoutParams rowParams = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT, 1f);
         rowParams.setMargins(2,2,2,2);
         /*
-         * Create TableHead with Textviews
+         * Create TableHead
          */
         TableRow tableRow = new TableRow(inGameActivity);
         tableRow.setLayoutParams(tableParams);
@@ -81,15 +90,41 @@ class TableAssistant {
         tableRow.setPadding(0,0,4,2);
 
         for(int column = -1; column < columnNames.size();column++){
-                final TextView textView = new TextView(inGameActivity);
+                final EditText textView = new EditText(inGameActivity);
 
                 textView.setPadding(10,10,10,10);
                 textView.setBackgroundColor(Color.LTGRAY);
 
                 if (column >= 0) {
                     textView.setText(columnNames.get(column));
+                    if(!labelColumns){
+                        textView.setFocusable(false);
+                        textView.setFocusableInTouchMode(false);
+                    }
+                    else{
+                        final int currentColumn = column;
+                        textView.setSelectAllOnFocus(true);
+                        textView.addTextChangedListener(new TextWatcher() {
+                            @Override
+                            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                                textView.getText();
+                            }
+
+                            @Override
+                            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                            }
+
+                            @Override
+                            public void afterTextChanged(Editable s) {
+                               columnNames.set(currentColumn,s.toString());
+                            }
+                        });
+                    }
                 } else {
                     textView.setText("");
+                    textView.setFocusable(false);
+                    textView.setFocusableInTouchMode(false);
                 }
                 textView.setLayoutParams(rowParams);
                 tableRow.addView(textView);
@@ -105,6 +140,7 @@ class TableAssistant {
         for(int row = 0; row < rows; row++) {
             tableRow = new TableRow(inGameActivity);
             tableRow.setLayoutParams(tableParams);
+            tableRow.setPadding(0,0,4,2);
 
             int[] rowContent = scoreTable.get(row);
             /*
