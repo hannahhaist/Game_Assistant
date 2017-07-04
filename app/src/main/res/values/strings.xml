@@ -54,5 +54,6 @@
     <string name="tvSeconds_str">Seconds</string>
     <string name="AddRow">Add Row</string>
     <string name="saveToTable">Save to Table</string>
+    <string name="new_game">newGame</string>
 
 </resources>
