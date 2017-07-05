@@ -94,6 +94,10 @@ class TimerAssistant implements Runnable{
         return hour*3600000 + minute*60000 + second*1000 ;
     }
 
+    protected long getStartMillis(){
+        return startHour*3600000 + startMinute*60000 + startSecond*1000 ;
+    }
+
     protected void pause(){
         paused = !paused;
     }
